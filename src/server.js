@@ -9,7 +9,8 @@ const server = new ApolloServer({
     schema,
     plugins: [
         ApolloServerPluginLandingPageGraphQLPlayground()
-    ]
+    ],
+    interospection: true
 })
 
 server.listen(PORT).then(({ url }) => {})
