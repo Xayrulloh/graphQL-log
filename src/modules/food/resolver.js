@@ -33,12 +33,16 @@ export default {
 
         deleteFood: (_, { foodId }, { read, write }) => {
             let foods = read('foods')
+            let orders = read('orders')
 
             const deletedFood = foods.filter(food => food.foodId == foodId)
 
             if (deletedFood.length) {
                 foods = foods.filter(food => food.foodId != foodId)
+                orders = orders.filter(order => order.foodId != foodId)
+
                 write('foods', foods) 
+                write('orders', orders) 
 
                 return {
                     status: 201,
