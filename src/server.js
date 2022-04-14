@@ -7,10 +7,10 @@ const PORT = process.env.PORT || 5000
 const server = new ApolloServer({
     context: ({ req, res }) => model,
     schema,
+    introspection: true,
     plugins: [
         ApolloServerPluginLandingPageGraphQLPlayground()
     ],
-    interospection: true
 })
 
 server.listen(PORT).then(({ url }) => {})
